@@ -1,6 +1,13 @@
+# Game loader tool module.
+# This module has for purpose to load the game to allow its execution while avoiding cascading errors.
+
+# Below are the imports.
+
 import importlib.util
 import os
 from lib import flags
+
+# Below is the code to import the game module and send it to the caller.
 
 def importmod(name="hi", path=""):
     try:

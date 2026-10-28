@@ -1,5 +1,14 @@
+# File input-output module.
+# This module's sole purpose is to read and write files while avoiding fatal errors.
+
+# Below are imports.
+
 from lib import flags
 from lib import logger
+import os
+
+# Below is the definition of the code to queue outputs if needed or pass them directly.
+
 queue = ""
 def print(text, end="\n"):
     global queue
@@ -8,8 +17,13 @@ def print(text, end="\n"):
         queue = ""
     else:
         queue = f"{queue}{text}"
-import os
+
+# Below is the code that avoids a recursive error mess.
+
 _open = open
+
+# Below is the definition of a demo, stub, empty, useless, crash avoider file object.
+
 class exfile:
     def __init__(self):
         pass
@@ -19,7 +33,13 @@ class exfile:
         print("Skipped write.")
     def close(self):
         print("Nothing to close")
+
+# Below is the definition of the exposed file object.
+
 class fileobject:
+    # Below is the code to open a file, referencing to the exfile stub in case of an issue.
+    # It supports read, read+write and just write.
+    # mode is on request.
     def __init__(self, filepath="", mode="r"):
         if filepath and os.path.exists(filepath):
             if mode == "r":
@@ -59,6 +79,7 @@ class fileobject:
             print("The file requested does not exist. Making our example to avoid crashes.")
             self.mode = "readwrite"
             self.file = exfile()
+    # Below is the code to read a read-enabled file.
     def read(self, count=0):
         try:
             if "read" in self.mode:
@@ -76,6 +97,7 @@ class fileobject:
             print(text=e)
             flags.raiseflag("FileError")
             return False
+    # Below is the code to write to a write enabled file.
     def write(self, content):
         try:
             if "write" in self.mode:
@@ -89,10 +111,14 @@ class fileobject:
         except:
             flags.raiseflag("FileError")
         return False
+    # Below is the code to close the file safely.
     def close(self):
         self.file.close()
         self.mode = ""
         del self.mode
         del self.file
+
+# Below is the stub to open a file easier. It is not required to use it but strongly recommended.
+
 def open(fp="", mode="r"):
     return fileobject(filepath=fp, mode=mode)
