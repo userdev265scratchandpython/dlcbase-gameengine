@@ -26,6 +26,17 @@ warn = logger.warn
 error = logger.error
 debug = logger.debug
 
+# Avoid bad flags getting through.
+
+def chk_ok():
+    # Verify each known flag.
+    for flag in ["LoadingError", "FileError", "PhraseError"]:
+        if flags.getflag(flag):
+            # Return True(ErrorHappened) if any helper flag error happened.
+            return True
+    # Return False otherwise.
+    return False
+
 # log the start of the loading.
 
 info("Loading DLCbase game... ")
@@ -43,6 +54,8 @@ config = phrasetool.phrase_w(lines)
 config = putdefaults.add(cfg=config, data=[["mainfile", ""], ["mainfunction", "main"], ["package", "err.unset.pkg"]])
 
 # Extract package name, main file path and main function to render access easier.
+
+debug("Ectract info")
 
 package = config["package"]
 mainfile = config["mainfile"]
@@ -65,6 +78,10 @@ if mainfunct == "":
 
 # Avoid an useless crash.
 
+if chk_ok():
+    if not flags.getflag("EngineWillQuit"):
+        flags.raiseflag("EngineWillQuit")
+
 if flags.getflag("EngineWillQuit"):
     exit()
 
@@ -76,6 +93,10 @@ if not os.path.exists(mainfile):
         flags.raiseflag("EngineWillQuit")
 
 # Same as before, avoid an useless crash.
+
+if chk_ok():
+    if not flags.getflag("EngineWillQuit"):
+        flags.raiseflag("EngineWillQuit")
 
 if flags.getflag("EngineWillQuit"):
     exit()
@@ -108,6 +129,10 @@ except Exception as e:
         flags.raiseflag("EngineWillQuit")
 
 # Once again, avoid a crash.
+
+if chk_ok():
+    if not flags.getflag("EngineWillQuit"):
+        flags.raiseflag("EngineWillQuit")
 
 if flags.getflag("EngineWillQuit"):
     exit()
