@@ -7,6 +7,8 @@ import tkinter as tk
 import threading
 from lib.logger import *
 
+info("Loaded GameLIB")
+
 # Below is a workaround used because Python tkinter sucks
 
 def report_exception(exc, val, tb):
