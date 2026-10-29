@@ -1,7 +1,8 @@
 # Main code. This should be run.
+# This is mostly a wrapper.
 
 # Importing the flags manager.
-from lib import flags       # flags.initflags, flags.raiseflag, flags.getflag
+from lib import flags                  # flags.initflags, flags.raiseflag, flags.getflag
 
 # Initializing flags.
 
@@ -22,13 +23,15 @@ else:
 
 # Importing other dependencies once flags are initialized.
 
-from lib import fileio      # fileio.open
-from lib import loadtool    # loadtool.importmod
-from lib import phrasetool  # phrasetool.phrase_w
-from lib import putdefaults # putdefaults.add
-from lib import gamelib     # nothing used, just to inject to games
-from lib import logger      # logging :)
-import os                   # just to check if a file exists...
+from lib import fileio                 # fileio.open
+from lib import loadtool               # loadtool.importmod
+from lib import phrasetool             # phrasetool.phrase_w
+from lib import putdefaults            # putdefaults.add
+from lib import gamelib                # nothing used, just to inject to games
+from lib import logger                 # logging :)
+import os                              # just to check if a file exists...
+from importlib.metadata import version # Get pip version
+
 
 # allow quicker use of the stubs from logger with slight overhead.
 
@@ -36,6 +39,14 @@ info = logger.info
 warn = logger.warn
 error = logger.error
 debug = logger.debug
+
+# Make sure pip is safe
+pip_version = tuple(map(int, version("pip").split(".")))
+info(f"Pip version : {version("pip")}")
+if pip_version <= (26, 2, 1):
+    print("Please update pip before running this.")
+    flags.raiseflag("EngineWillQuit")
+
 
 # Avoid bad flags getting through.
 
