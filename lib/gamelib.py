@@ -5,6 +5,7 @@
 
 import tkinter as tk
 import threading
+from lib.logger import *
 
 # Below is a workaround used because Python tkinter sucks
 

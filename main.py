@@ -150,7 +150,9 @@ if flags.getflag("EngineWillQuit"):
 if hasattr(game, mainfunct):
     debug("Running game")
     try:
+        info("===== Game execution start")
         getattr(game, mainfunct)()
+        info("===== Game execution end")
         debug("Game closed successfully")
     except Exception as e:
         # handle errors.
