@@ -12,6 +12,21 @@ import datetime
 import inspect
 import sys
 
+# Set log level
+
+loglevel = "info"
+
+# Detect loglevel param
+
+if "--debug" in sys.argv:
+    loglevel = "debug"
+elif "--info" in sys.argv:
+    loglevel = "info"
+elif "--warn" in sys.argv:
+    loglevel = "warn"
+elif "--err" in sys.argv:
+    loglevel = "err"
+
 # Below is the code to log.
 
 def log(message, level="INFO", module="__unknown__"):
@@ -22,21 +37,25 @@ def log(message, level="INFO", module="__unknown__"):
 # Below are the stubs for each loglevel.
 
 def info(message):
-    caller = inspect.currentframe().f_back
-    module = caller.f_globals.get("__name__", "__unknown__").replace("__main__", sys.argv[0]).removesuffix(".py").replace(".", "/") + ".py"
-    log(message, "INFO", module)
+    if loglevel in ["info", "debug"]:
+        caller = inspect.currentframe().f_back
+        module = caller.f_globals.get("__name__", "__unknown__").replace("__main__", sys.argv[0]).removesuffix(".py").replace(".", "/") + ".py"
+        log(message, "INFO", module)
 
 def warn(message):
-    caller = inspect.currentframe().f_back
-    module = caller.f_globals.get("__name__", "__unknown__").replace("__main__", sys.argv[0]).removesuffix(".py").replace(".", "/") + ".py"
-    log(message, "WARN", module)
+    if loglevel in ["info", "debug", "warn"]:
+        caller = inspect.currentframe().f_back
+        module = caller.f_globals.get("__name__", "__unknown__").replace("__main__", sys.argv[0]).removesuffix(".py").replace(".", "/") + ".py"
+        log(message, "WARN", module)
 
 def error(message):
-    caller = inspect.currentframe().f_back
-    module = caller.f_globals.get("__name__", "__unknown__").replace("__main__", sys.argv[0]).removesuffix(".py").replace(".", "/") + ".py"
-    log(message, "ERROR", module)
+    if loglevel in ["info", "debug", "warn", "err"]:
+        caller = inspect.currentframe().f_back
+        module = caller.f_globals.get("__name__", "__unknown__").replace("__main__", sys.argv[0]).removesuffix(".py").replace(".", "/") + ".py"
+        log(message, "ERROR", module)
 
 def debug(message):
-    caller = inspect.currentframe().f_back
-    module = caller.f_globals.get("__name__", "__unknown__").replace("__main__", sys.argv[0]).removesuffix(".py").replace(".", "/") + ".py"
-    log(message, "DEBUG", module)
+    if loglevel in ["debug"]:
+        caller = inspect.currentframe().f_back
+        module = caller.f_globals.get("__name__", "__unknown__").replace("__main__", sys.argv[0]).removesuffix(".py").replace(".", "/") + ".py"
+        log(message, "DEBUG", module)
