@@ -5,9 +5,17 @@ from lib import flags       # flags.initflags, flags.raiseflag, flags.getflag
 
 # Initializing flags.
 
-flags.initflags([
-    "LoadingError", "FileError", "PhraseError", "EngineWillQuit"
-])
+# Set default flags
+_flags = ["LoadingError", "FileError", "PhraseError"]
+# set full flags list(will be filled)
+flagsfull = []
+# iterate over all flags and the engine quit one
+for flagsl in [_flags, ["EngineWillQuit"]]:
+    for flag in flagsl:
+        # add the flags to the full flags list
+        flagsfull.append(flag)
+
+flags.initflags(flagsfull)
 
 # Importing other dependencies once flags are initialized.
 
@@ -30,7 +38,8 @@ debug = logger.debug
 
 def chk_ok():
     # Verify each known flag.
-    for flag in ["LoadingError", "FileError", "PhraseError"]:
+    # use only flags other than EngineWillQuit
+    for flag in _flags:
         if flags.getflag(flag):
             # Return True(ErrorHappened) if any helper flag error happened.
             return True
