@@ -15,7 +15,10 @@ for flagsl in [_flags, ["EngineWillQuit"]]:
         # add the flags to the full flags list
         flagsfull.append(flag)
 
-flags.initflags(flagsfull)
+if flags.initflags(flagsfull):
+    pass
+else:
+    exit()
 
 # Importing other dependencies once flags are initialized.
 
