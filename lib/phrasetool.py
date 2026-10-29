@@ -29,15 +29,21 @@ def phrase_w(lines=[]):
                 else:
                     # String handing.
                     val = a[1].lstrip().rstrip().lstrip(" ").rstrip(" ")
-                config[key] = val
+                # Avoid overriding an existing key.
+                if key not in config:
+                    config[key] = val
+                else:
+                    print("Duplicate key, avoiding override")
             else:
                 # Raise the phrasing error flag if configuration is malformed.
                 flags.raiseflag("PhraseError")
         else:
             # Avoid treating a comment as an error.
             if not line.startswith("# "):
-                # Raise an error on malformed config.
-                flags.raiseflag("PhraseError")
+                # Avoid treating empty lines as errors.
+                if len(line) > 2:
+                    # Raise an error on malformed config.
+                    flags.raiseflag("PhraseError")
     # Make sure no errors happened or return blank configuration to aviod errors.
     if not flags.getflag("PhraseError"):
         return config

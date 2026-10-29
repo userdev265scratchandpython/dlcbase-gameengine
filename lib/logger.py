@@ -39,3 +39,4 @@ def debug(message):
     caller = inspect.currentframe().f_back
     module = caller.f_globals.get("__name__", "__unknown__")
     log(message, "DEBUG", module)
+    

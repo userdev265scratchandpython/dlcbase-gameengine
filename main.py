@@ -155,7 +155,7 @@ if hasattr(game, mainfunct):
     except Exception as e:
         # handle errors.
         error("Game errored out: ")
-        print(e)
+        error(e)
 else:
     # Avoid running nonexistant code.
     debug("Supplied main function does NOT exist.")

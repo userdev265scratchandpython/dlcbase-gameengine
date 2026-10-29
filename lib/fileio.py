@@ -96,7 +96,7 @@ class fileobject:
         except Exception as e:
             print(text=e)
             flags.raiseflag("FileError")
-            return False
+            return ""
     # Below is the code to write to a write enabled file.
     def write(self, content):
         try:
