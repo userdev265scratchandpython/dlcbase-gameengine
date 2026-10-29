@@ -10,6 +10,7 @@
 
 import datetime
 import inspect
+import sys
 
 # Below is the code to log.
 
@@ -22,21 +23,20 @@ def log(message, level="INFO", module="__unknown__"):
 
 def info(message):
     caller = inspect.currentframe().f_back
-    module = caller.f_globals.get("__name__", "__unknown__")
+    module = caller.f_globals.get("__name__", "__unknown__").replace("__main__", sys.argv[0]).removesuffix(".py").replace(".", "/") + ".py"
     log(message, "INFO", module)
 
 def warn(message):
     caller = inspect.currentframe().f_back
-    module = caller.f_globals.get("__name__", "__unknown__")
+    module = caller.f_globals.get("__name__", "__unknown__").replace("__main__", sys.argv[0]).removesuffix(".py").replace(".", "/") + ".py"
     log(message, "WARN", module)
 
 def error(message):
     caller = inspect.currentframe().f_back
-    module = caller.f_globals.get("__name__", "__unknown__")
+    module = caller.f_globals.get("__name__", "__unknown__").replace("__main__", sys.argv[0]).removesuffix(".py").replace(".", "/") + ".py"
     log(message, "ERROR", module)
 
 def debug(message):
     caller = inspect.currentframe().f_back
-    module = caller.f_globals.get("__name__", "__unknown__")
+    module = caller.f_globals.get("__name__", "__unknown__").replace("__main__", sys.argv[0]).removesuffix(".py").replace(".", "/") + ".py"
     log(message, "DEBUG", module)
-    
