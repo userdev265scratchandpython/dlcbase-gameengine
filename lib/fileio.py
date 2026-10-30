@@ -10,7 +10,7 @@ import os
 # Below is the definition of the code to queue outputs if needed or pass them directly.
 
 queue = ""
-def print(text, end="\n"):
+def print(text: str, end: str = "\n") -> None:
     global queue
     if end.endswith("\n"):
         logger.debug(f"{queue}{text}{end}".rstrip("\n"))
@@ -26,12 +26,34 @@ _open = open
 
 class exfile:
     def __init__(self):
+        """
+        Does:
+            nothing
+        """
         pass
     def read(self):
+        """
+        Returns:
+            nothing
+        """
         return ""
-    def write(self, data):
+    def write(self, data: str) -> None:
+        """
+        does nothing
+
+        Args:
+            data: string.
+
+        Returns:
+            nothing
+
+        """
         print("Skipped write.")
     def close(self):
+        """
+        Returns:
+            nothing
+        """
         print("Nothing to close")
 
 # Below is the definition of the exposed file object.
@@ -40,7 +62,18 @@ class fileobject:
     # Below is the code to open a file, referencing to the exfile stub in case of an issue.
     # It supports read, read+write and just write.
     # mode is on request.
-    def __init__(self, filepath="", mode="r"):
+    def __init__(self, filepath: str = "", mode: str = "r") -> None:
+        """
+        Opens a file with a mode.
+
+        Args:
+            filepath: A file's path.
+            mode: any mode in the following list: r, rw, w.
+
+        Returns:
+            None, the class is returned
+
+        """
         if filepath and os.path.exists(filepath):
             if mode == "r":
                 print(text=f"Opening \"{filepath}\" readonly... ", end="")
@@ -80,7 +113,17 @@ class fileobject:
             self.mode = "readwrite"
             self.file = exfile()
     # Below is the code to read a read-enabled file.
-    def read(self, count=0):
+    def read(self, count: int = 0) -> str:
+        """
+        Read a file if possible
+
+        Args:
+            count: amount of characters.
+
+        Returns:
+            Data returned by the real python file object.
+
+        """
         try:
             if "read" in self.mode:
                 if type(count).__name__ == "int":
@@ -98,7 +141,17 @@ class fileobject:
             flags.raiseflag("FileError")
             return ""
     # Below is the code to write to a write enabled file.
-    def write(self, content):
+    def write(self, content: str = "") -> bool:
+        """
+        Write to a file if possible.
+
+        Args:
+            content: Content to write.
+
+        Returns:
+            Success status.
+
+        """
         try:
             if "write" in self.mode:
                 if type(content).__name__ == "str":
@@ -113,6 +166,13 @@ class fileobject:
         return False
     # Below is the code to close the file safely.
     def close(self):
+        """
+        Closes the file
+
+        Returns:
+            nothing
+
+        """
         self.file.close()
         self.mode = ""
         del self.mode
@@ -120,5 +180,16 @@ class fileobject:
 
 # Below is the stub to open a file easier. It is not required to use it but strongly recommended.
 
-def open(fp="", mode="r"):
+def open(fp: str = "", mode: str = "r") -> fileobject:
+    """
+    Open a flileobject
+
+    Args:
+        fp: the path of the file.
+        mode: any of the following: r, rw, w.
+
+    Returns:
+        an initialized fileobject that can read(if mode allows it) or write(if mode allows it).
+
+    """
     return fileobject(filepath=fp, mode=mode)

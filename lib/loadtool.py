@@ -9,7 +9,18 @@ from lib import flags
 
 # Below is the code to import the game module and send it to the caller.
 
-def importmod(name="hi", path=""):
+def importmod(name: str = "hi", path: str = "") -> Any:
+    """
+    Imports a module.
+
+    Args:
+        name: used for importlib, not critical to change.
+        path: Path of module.
+
+    Returns:
+        The imported module.
+
+    """
     try:
         if path and os.path.exists(path):
             spec = importlib.util.spec_from_file_location(name, path)

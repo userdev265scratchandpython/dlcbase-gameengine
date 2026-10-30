@@ -12,7 +12,17 @@ from lib import flags
 
 # Below is the code to phrase stuff.
 
-def phrase_w(lines=[]):
+def phrase_w(lines: list = []) -> dict:
+    """
+    Phraze a Winst config style config.
+
+    Args:
+        lines: Lines of the configuration file.
+
+    Returns:
+        Configuration keys and values.
+
+    """
     config = {}
     for line in lines:
         if " : " in line:

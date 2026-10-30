@@ -13,7 +13,13 @@ warn = logger.warn
 
 # Below is the code to raise a flag. A flag cannot be unraised.
 
-def raiseflag(flag):
+def raiseflag(flag: str) -> bool:
+    """
+    Raises a flag initialized from initflags.
+    Can be used by import.
+    Takes the flag argument, a string of the flag's name.
+    Returns None.
+    """
     global _flags, info, debug, warn
     try:
         if _flags[flag] == True:
@@ -21,22 +27,36 @@ def raiseflag(flag):
         else:
             info(f"Raised flag \"{flag}\".")
             _flags[flag] = True
+            return True
     except:
         warn(f"No such known flag \"{flag}\".")
+    return False
 
 # Below is the code to read a flag.
 
-def getflag(flag):
+def getflag(flag: str) -> bool:
+    """
+    reads from _flags
+    Reads a flag initialized from initflags()
+    Can be used by import.
+    Takes the flag argument, a string of the flag's name.
+    Returns the flag's raise status(via raiseflag()) if existant or None.
+    """
     global _flags, info, debug, warn
     if flag in _flags:
         return _flags[flag]
     else:
         warn("Flag does not exist. Returning None.")
-        return None
+        return False
 
 # Below is the code to initialize flags.
 
-def initflags(flagslist):
+def initflags(flagslist: list) -> bool:
+    """
+    Initializes flags from a list of strings.
+    Can be used by import.
+    Returns its success state(True or False).
+    """
     global _flags, info, debug, warn
     _flags = {}
     try:

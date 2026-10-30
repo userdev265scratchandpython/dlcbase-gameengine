@@ -2,7 +2,17 @@
 # This module adds default keys if unset to avoid a crash.
 # This only gets it to say what you did wrong instead of yelling at you.
 
-def add(cfg=None, data=[["ExKey", ["ExVal0", "ExVal1"]], ["ExKey2", "ExVal0"]]):
+def add(cfg: dict = None, data: list = [["ExKey", ["ExVal0", "ExVal1"]], ["ExKey2": str, "ExVal0"]]) -> dict:
+    """Brief description of add.
+
+    Args:
+        cfg: Phrased configuration.
+        data: Default keys and values.
+
+    Returns:
+        Configuration with defaults for missing keys.
+
+    """
     if cfg is None:
         cfg = {}
     config = cfg

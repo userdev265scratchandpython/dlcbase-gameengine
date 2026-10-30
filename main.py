@@ -51,6 +51,13 @@ if pip_version <= (26, 2, 1):
 # Avoid bad flags getting through.
 
 def chk_ok():
+    """
+    Checks if the flags are raised and returns True if any is.
+
+    Returns:
+        True if any flag is raised, False otherwise.
+
+    """
     # Verify each known flag.
     # use only flags other than EngineWillQuit
     for flag in _flags:

@@ -11,17 +11,42 @@ info("Loaded GameLIB")
 
 # Below is a workaround used because Python tkinter sucks
 
-def report_exception(exc, val, tb):
+def report_exception(exc: Any, val: Any, tb: Any) -> None:
+    """
+    Catch an error instead of tkinter.
+
+    Args:
+        exc: Dunno, GPT made this to help me fix tkinter not letting me crash stuff.
+        val: Dunno, GPT made this to help me fix tkinter not letting me crash stuff.
+        tb: Dunno, GPT made this to help me fix tkinter not letting me crash stuff.
+
+    Returns:
+        nothing
+    """
     raise Exception(f"Tkinter callback failed: {val}")
 
 # Below is a stub to raise an error because it's easier that way.
 
 def err():
+    """
+    Raises an error.
+
+    Returns:
+        nothing
+
+    """
     raise Exception("Asked to crash")
 
 # Below is the code to initialize a window.
 
 def exwindow():
+    """
+    Opens an example window
+
+    Returns:
+        nothing
+
+    """
     root = tk.Tk()
     # The line below uses the workaround stub so tkinter doesn't catch the error.
     root.report_callback_exception = report_exception
