@@ -11,3 +11,6 @@ Run the main.py script in the project root.
 
 ## Copyright.
 Copyright(c) 2026 userdev265scratchandpython and contributors.
+
+## Announcements.
+Announcements file : ANNOUNCEMENTS.md
