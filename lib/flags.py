@@ -32,7 +32,7 @@ def getflag(flag):
         return _flags[flag]
     else:
         warn("Flag does not exist. Returning None.")
-        return none
+        return None
 
 # Below is the code to initialize flags.
 
