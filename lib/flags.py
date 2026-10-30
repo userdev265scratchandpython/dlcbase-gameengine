@@ -18,7 +18,7 @@ def raiseflag(flag: str) -> bool:
     Raises a flag initialized from initflags.
     Can be used by import.
     Takes the flag argument, a string of the flag's name.
-    Returns None.
+    Returns its success status.
     """
     global _flags, info, debug, warn
     try:
