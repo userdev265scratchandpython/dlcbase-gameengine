@@ -44,7 +44,7 @@ def log(message: str, level: str = "INFO", module: str = "__unknown__") -> None:
 
     """
     timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    module = module[:15].ljust(15)
+    module = module[:20].ljust(20)
     print(f"[{timestamp}] [{module}] [{level[:5].ljust(5)}] {message}")
 
 # Below are the stubs for each loglevel.

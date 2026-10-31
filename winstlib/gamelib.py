@@ -6,6 +6,9 @@
 import tkinter as tk
 import threading
 from winstlib import logger
+from winstlib import fileio
+from winstlib import loadtool
+from winstlib import phrasetool
 
 # Define stubs for output
 
@@ -13,6 +16,18 @@ info = logger.info
 warn = logger.warn
 debug = logger.debug
 error = logger.error
+
+# Define stubs for file input/output
+
+open = fileio.open
+
+# Define stubs for loading mods
+
+loadmod = loadtool.importmod
+
+# Define stubs for loading mods
+
+phrase = phrasetool.phrase_w
 
 info("Loaded GameLIB")
 
