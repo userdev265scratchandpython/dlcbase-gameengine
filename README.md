@@ -4,7 +4,7 @@ This is a python-based game engine attempt centered around freedom and accessibi
 It is designed to make coding easier by doing the heavy listing and avoiding long tracebacks you don't understand.
 
 ## Coding.
-Right now, the engine is too early stage to be used properly.
+Right now, the engine is too early stage to be used properly. Nearing usability for basic games.
 
 ## Running.
 Run the main.py script in the project root.

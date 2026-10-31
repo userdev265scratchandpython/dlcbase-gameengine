@@ -17,8 +17,8 @@ def main():
 
             player_x += speed_x
             player_y -= speed_y
-            speed_x = sum([speed_x * 4, 0]) / 5
-            speed_y = sum([speed_y * 4, 0]) / 5
+            speed_x = sum([speed_x * 8, 0]) / 9
+            speed_y = sum([speed_y * 8, 0]) / 9
 
             if game.key_down("LEFT"):
                 speed_x = sum([speed_x, -120]) / 9
