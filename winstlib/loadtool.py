@@ -5,7 +5,7 @@
 
 import importlib.util
 import os
-from lib import flags
+from winstlib import flags
 
 # Below is the code to import the game module and send it to the caller.
 

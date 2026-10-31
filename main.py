@@ -2,7 +2,7 @@
 # This is mostly a wrapper.
 
 # Importing the flags manager.
-from lib import flags                  # flags.initflags, flags.raiseflag, flags.getflag
+from winstlib import flags                  # flags.initflags, flags.raiseflag, flags.getflag
 
 # Initializing flags.
 
@@ -23,12 +23,12 @@ else:
 
 # Importing other dependencies once flags are initialized.
 
-from lib import fileio                 # fileio.open
-from lib import loadtool               # loadtool.importmod
-from lib import phrasetool             # phrasetool.phrase_w
-from lib import putdefaults            # putdefaults.add
-from lib import gamelib                # nothing used, just to inject to games
-from lib import logger                 # logging :)
+from winstlib import fileio                 # fileio.open
+from winstlib import loadtool               # loadtool.importmod
+from winstlib import phrasetool             # phrasetool.phrase_w
+from winstlib import putdefaults            # putdefaults.add
+from winstlib import gamelib                # nothing used, just to inject to games
+from winstlib import logger                 # logging :)
 import os                              # just to check if a file exists...
 from importlib.metadata import version # Get pip version
 

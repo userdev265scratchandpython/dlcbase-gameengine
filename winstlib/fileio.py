@@ -3,8 +3,8 @@
 
 # Below are imports.
 
-from lib import flags
-from lib import logger
+from winstlib import flags
+from winstlib import logger
 import os
 
 # Below is the definition of the code to queue outputs if needed or pass them directly.

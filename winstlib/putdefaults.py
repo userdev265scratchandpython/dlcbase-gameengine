@@ -1,8 +1,9 @@
 # Crash avoider by putting defaults.
 # This module adds default keys if unset to avoid a crash.
 # This only gets it to say what you did wrong instead of yelling at you.
+# No imports needed
 
-def add(cfg: dict = None, data: list = [["ExKey", ["ExVal0", "ExVal1"]], ["ExKey2": str, "ExVal0"]]) -> dict:
+def add(cfg: dict = None, data: list = [["ExKey", ["ExVal0", "ExVal1"]], ["ExKey2", "ExVal0"]]) -> dict:
     """Brief description of add.
 
     Args:

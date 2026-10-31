@@ -5,7 +5,7 @@
 
 import tkinter as tk
 import threading
-from lib.logger import *
+from winstlib.logger import *
 
 info("Loaded GameLIB")
 

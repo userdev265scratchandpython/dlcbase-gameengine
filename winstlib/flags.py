@@ -3,7 +3,7 @@
 
 # Below are the imports.
 
-from lib import logger
+from winstlib import logger
 
 # Below is initialization for information, debug and wan stubs.
 

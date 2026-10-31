@@ -8,7 +8,7 @@
 
 # Below are the imports.
 
-from lib import flags
+from winstlib import flags
 
 # Below is the code to phrase stuff.
 
