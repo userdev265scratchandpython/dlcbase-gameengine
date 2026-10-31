@@ -5,7 +5,14 @@
 
 import tkinter as tk
 import threading
-from winstlib.logger import *
+from winstlib import logger
+
+# Define stubs for output
+
+info = logger.info
+warn = logger.warn
+debug = logger.debug
+error = logger.error
 
 info("Loaded GameLIB")
 
