@@ -9,6 +9,7 @@ from winstlib import logger
 from winstlib import fileio
 from winstlib import loadtool
 from winstlib import phrasetool
+from winstlib.renderer import Renderer
 
 # Define stubs for output
 
